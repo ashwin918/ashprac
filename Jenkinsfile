@@ -24,7 +24,16 @@ pipeline {
                 bat '''
                 docker stop ashprac-container
                 docker rm ashprac-container
-                docker run -d -p 8099:80 --name ashprac-container ashprac                '''
+                docker run -d -p 8099:80 --name ashprac-container ashprac
+                '''
+            }
+        }
+
+        stage('Deploy To EC2') {
+            steps {
+                bat '''
+                ssh -o StrictHostKeyChecking=no -i C:\\jenkins-key\\ashprac-key.pem ubuntu@3.27.160.212 "echo Connected from Jenkins"
+                '''
             }
         }
     }
