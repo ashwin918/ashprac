@@ -24,8 +24,7 @@ pipeline {
                 bat '''
                 docker stop ashprac-container
                 docker rm ashprac-container
-                docker run -d -p 8082:80 --name ashprac-container ashprac
-                '''
+                docker run -d -p 8099:80 --name ashprac-container ashprac                '''
             }
         }
     }
