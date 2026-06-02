@@ -18,5 +18,15 @@ pipeline {
                 '''
             }
         }
+
+        stage('Run Container') {
+            steps {
+                bat '''
+                docker stop ashprac-container
+                docker rm ashprac-container
+                docker run -d -p 8082:80 --name ashprac-container ashprac
+                '''
+            }
+        }
     }
 }
